@@ -1,0 +1,79 @@
+﻿Folder PATH listing for volume My files and fields
+Volume serial number is 0638-322D
+B:\SUMMER INTERNSHIP PROJECT - WB\WORKBRIDGE
+ª   Project_Structure.txt
+ª   README.md
+ª   Structure.txt
+ª   
++---backend
+ª   ª   .env
+ª   ª   .env.example
+ª   ª   requirements.txt
+ª   ª   
+ª   +---app
+ª   ª   ª   main.py
+ª   ª   ª   
+ª   ª   +---core
+ª   ª   ª       config.py
+ª   ª   ª       database.py
+ª   ª   ª       security.py
+ª   ª   ª       
+ª   ª   +---dependencies
+ª   ª   ª       auth.py
+ª   ª   ª       
+ª   ª   +---models
+ª   ª   ª       schemas.py
+ª   ª   ª       
+ª   ª   +---routes
+ª   ª   ª       auth_routes.py
+ª   ª   ª       job_routes.py
+ª   ª   ª       match_routes.py
+ª   ª   ª       worker_routes.py
+ª   ª   ª       
+ª   ª   +---services
+ª   ª           match_service.py
+ª   ª           skill_normalizer.py
+ª   ª           
+ª   +---tests
+ª           test_api.py
+ª           
++---frontend
+    ª   .gitignore
+    ª   .oxlintrc.json
+    ª   index.html
+    ª   package-lock.json
+    ª   package.json
+    ª   README.md
+    ª   vite.config.js
+    ª   
+    +---public
+    ª       favicon.svg
+    ª       icons.svg
+    ª       
+    +---src
+        ª   App.css
+        ª   App.jsx
+        ª   index.css
+        ª   main.jsx
+        ª   
+        +---assets
+        ª       hero.png
+        ª       react.svg
+        ª       vite.svg
+        ª       
+        +---components
+        ª       Footer.jsx
+        ª       Navbar.jsx
+        ª       
+        +---pages
+        ª       Dashboard.jsx
+        ª       Home.jsx
+        ª       Login.jsx
+        ª       PostJob.jsx
+        ª       Recommendation.jsx
+        ª       Register.jsx
+        ª       Worker.jsx
+        ª       
+        +---services
+                api.js
+                
