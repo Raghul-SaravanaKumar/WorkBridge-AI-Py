@@ -11,6 +11,28 @@ async def get_all_workers():
     workers = await workers_collection.find().to_list(1000)
     return [{**w, "id": str(w["_id"])} for w in workers]
 
+@router.get("/me", response_model=WorkerResponse)
+async def get_my_worker_profile(current_user: dict = Depends(get_current_worker)):
+    worker = await workers_collection.find_one({"email": current_user["email"]})
+    if not worker:
+        raise HTTPException(status_code=404, detail="Worker profile not found")
+    return {**worker, "id": str(worker["_id"])}
+
+@router.post("", response_model=WorkerResponse)
+async def create_worker_profile(worker_update: WorkerUpdate, current_user: dict = Depends(get_current_worker)):
+    existing = await workers_collection.find_one({"email": current_user["email"]})
+    if existing:
+        raise HTTPException(status_code=400, detail="Worker profile already exists")
+    
+    new_worker = worker_update.dict(exclude_unset=True)
+    new_worker["email"] = current_user["email"]
+    new_worker["name"] = current_user.get("name", "Unknown Worker")
+    new_worker["user_id"] = current_user["id"]
+    
+    result = await workers_collection.insert_one(new_worker)
+    new_worker["_id"] = result.inserted_id
+    return {**new_worker, "id": str(new_worker["_id"])}
+
 @router.get("/{worker_id}", response_model=WorkerResponse)
 async def get_worker(worker_id: str):
     if not ObjectId.is_valid(worker_id):
